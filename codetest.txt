@@ -1,0 +1,50 @@
+#include <stdio.h>
+
+void cost(int n, int a[])
+{
+    int sum=0,r=1;
+    for(int i=0;i<n-1;i++)
+    {
+        for(int j=0;j<n-i-1;j++)
+        {
+           if(a[j]>a[j+1])
+           {
+               int temp=a[j];
+               a[j]=a[j+1];
+               a[j+1]=temp;
+               
+           }
+           
+        }
+    }
+/*    for(int i=0;i<n;i++)
+        printf(" %d", a[i]);
+ */    
+    for(int i=0;i<n-1;)
+    {
+        sum=sum+a[n-1]+a[i];
+        n--;
+      
+    }
+    printf(" %d\n",sum-a[0]);
+}
+
+int main()
+{
+    int t;
+    scanf("%d", &t);
+    while(t--)
+    {
+        
+    int n;
+//    printf("Enter the number of villagers");
+    scanf("%d", &n);
+//   printf("Enter their travelling cost");
+    int a[n];
+        for(int i=0;i<n;i++)
+            scanf("%d", &a[i]);
+
+        cost(n,a);
+    }
+    return 0;
+}
